@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap": "tsx scripts/generate-sitemap.ts",
     "precheck": "pnpm type:check && pnpm format:check && pnpm lint",
     "prebuild": "pnpm sitemap && pnpm precheck",
     "export": "next build",
@@ -21,7 +21,8 @@
   "dependencies": {
     "next": "15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sitemap": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -39,8 +40,8 @@
     "prettier": "^3.5.3",
     "serve": "^14.2.4",
     "sharp": "^0.33.5",
-    "sitemap": "^8.0.0",
     "tailwindcss": "4.0",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   }
 }
