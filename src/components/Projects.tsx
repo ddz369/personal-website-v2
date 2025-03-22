@@ -193,7 +193,7 @@ const Projects = () => {
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
-            Recent Works
+            My Recent Works
           </h2>
           <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
           <p className="text-indigo-200/70 max-w-2xl mx-auto">

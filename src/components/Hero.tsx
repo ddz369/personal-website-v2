@@ -146,7 +146,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
               <Link href="#projects">
                 <Button variant="primary" size="lg" className="rounded-full">
-                  View Portfolio
+                  See My Works
                 </Button>
               </Link>
               <Link href="#contact">
