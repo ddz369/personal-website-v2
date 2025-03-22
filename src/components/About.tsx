@@ -50,7 +50,7 @@ const About = () => {
     <section id="about" className="py-20 font-light">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <AnimateOnScroll animation="slideUp" className="relative">
+          <AnimateOnScroll animation="slideUp" className="relative" delay={0.2}>
             <div className="mb-6">
               <h2 className="text-3xl md:text-4x bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-2">
                 About Me
@@ -91,7 +91,7 @@ const About = () => {
 
           <AnimateOnScroll
             animation="slideUp"
-            delay={0.2}
+            delay={0.5}
             className="bg-indigo-900/20 backdrop-blur-sm rounded-xl p-6 border border-indigo-800/30"
           >
             <div className="flex justify-center mb-6 gap-2 flex-wrap md:flex-nowrap">
@@ -112,7 +112,7 @@ const About = () => {
             </div>
 
             <div className="min-h-[180px] transition-all duration-500">
-              <AnimateOnScroll animation="fadeIn" threshold={0.1}>
+              <AnimateOnScroll animation="fadeIn" threshold={0.1} delay={0.2}>
                 <ul className="space-y-3">
                   {tabs[activeTab].content.map((item: string, index: number) => (
                     <li key={index} className="flex items-start gap-3">

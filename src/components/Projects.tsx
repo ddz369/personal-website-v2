@@ -1,10 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
 import { ArrowLeft, ArrowRight, Link } from '@phosphor-icons/react';
 import Button from '@/components/Button';
 import { AnimateOnScroll, StaggerContainer, StaggerItem } from '@/utils/animation';
+import { useInView } from 'react-intersection-observer';
+import { useLoading } from '@/utils/loadingContext';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -174,6 +177,31 @@ const Projects = () => {
   const navigationNextRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const { ref: carouselRef, inView: carouselInView } = useInView({
+    threshold: 0.2,
+    triggerOnce: false,
+  });
+  const { isLoading } = useLoading();
+
+  useEffect(() => {
+    if (swiperInstance) {
+      if (carouselInView && !isLoading) {
+        // Start autoplay when carousel is in view and loading is complete
+        if (swiperInstance.autoplay) {
+          // Small delay to ensure animations have completed
+          setTimeout(() => {
+            swiperInstance.autoplay.start();
+            console.log('Autoplay started');
+          }, 500);
+        }
+      } else {
+        // Stop autoplay when carousel is not in view or during loading
+        if (swiperInstance.autoplay) {
+          swiperInstance.autoplay.stop();
+        }
+      }
+    }
+  }, [carouselInView, swiperInstance, isLoading]);
 
   const goToSlide = (index: number) => {
     if (swiperInstance) {
@@ -182,11 +210,12 @@ const Projects = () => {
       if (swiperInstance.autoplay) {
         swiperInstance.autoplay.stop();
 
+        // Resume autoplay after a brief pause if carousel is in view
         setTimeout(() => {
-          if (swiperInstance.autoplay) {
+          if (swiperInstance.autoplay && carouselInView && !isLoading) {
             swiperInstance.autoplay.start();
           }
-        }, 4000);
+        }, 2000); // Shorter pause time
       }
     }
   };
@@ -207,7 +236,7 @@ const Projects = () => {
         </AnimateOnScroll>
 
         <AnimateOnScroll animation="slideUp" delay={0.2} duration={0.7}>
-          <div className="relative projects-carousel max-w-6xl mx-auto">
+          <div ref={carouselRef} className="relative projects-carousel max-w-6xl mx-auto">
             <Swiper
               modules={[Navigation, Pagination, Keyboard, Autoplay]}
               spaceBetween={30}
@@ -220,11 +249,16 @@ const Projects = () => {
               loop={true}
               autoplay={{
                 delay: 5000,
-                disableOnInteraction: true,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
               }}
               onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
               onSwiper={swiper => {
                 setSwiperInstance(swiper);
+                // Initially stop autoplay until component is in view
+                if (swiper.autoplay) {
+                  swiper.autoplay.stop();
+                }
 
                 setTimeout(() => {
                   if (swiper && swiper.params) {
@@ -233,25 +267,34 @@ const Projects = () => {
                     // @ts-expect-error - Swiper types don't fully match runtime behavior
                     swiper.params.navigation.nextEl = navigationNextRef.current;
                     swiper.navigation.update();
+
+                    // Check if already in view at initialization
+                    if (carouselInView && !isLoading) {
+                      swiper.autoplay.start();
+                    }
                   }
                 });
               }}
               className="rounded-xl overflow-hidden"
             >
-              {projectsData.map(project => (
+              {projectsData.map((project, index) => (
                 <SwiperSlide key={project.id}>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
                     <div className="project-image h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden relative group">
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300" />
                       <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20" />
-                      <div
-                        className="w-full h-full bg-indigo-800/30 transform group-hover:scale-105 transition-transform duration-500"
-                        style={{
-                          backgroundImage: `url(${project.image})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }}
-                      />
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P/BfwAJeAP9AzgmjAAAAABJRU5ErkJggg=="
+                          priority={index === 0}
+                        />
+                      </div>
                     </div>
                     <StaggerContainer className="project-details flex flex-col justify-between h-96 lg:h-80">
                       <div>

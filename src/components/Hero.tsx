@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { StaggerContainer, StaggerItem } from '@/utils/animation';
+import { useLoading } from '@/utils/loadingContext';
 import {
   StackSimple,
   Code,
@@ -21,6 +22,7 @@ const TypewriterComponent = dynamic(() => import('typewriter-effect'), { ssr: fa
 const Hero = () => {
   const { personalInfo, socialLinks } = config;
   const [isMounted, setIsMounted] = useState(false);
+  const { isLoading } = useLoading();
 
   useEffect(() => {
     setIsMounted(true);
@@ -36,15 +38,15 @@ const Hero = () => {
           <motion.div
             className="w-full md:w-2/5 flex justify-center md:justify-start"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 20 : 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
           >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <motion.div
                 className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 p-1"
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+                animate={{ scale: isLoading ? 0.8 : 1, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
               >
                 <div className="rounded-full bg-gray-900 h-full w-full p-3 hover:scale-110 transition-all duration-300">
                   <div className="bg-indigo-950 h-full w-full rounded-full bg-gradient-to-tr from-yellow-300 to-yellow-500 overflow-hidden">
@@ -55,6 +57,9 @@ const Hero = () => {
                       src="/avatar.png"
                       alt={`${personalInfo.name} Avatar`}
                       className="h-full w-full object-cover"
+                      priority
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P/BfwAJeAP9AzgmjAAAAABJRU5ErkJggg=="
                     />
                   </div>
                 </div>
@@ -63,32 +68,32 @@ const Hero = () => {
               <motion.div
                 className="absolute -top-4 -left-4 bg-indigo-900 shadow-lg rounded-full p-2 animate-float hover:-translate-y-2 transition-all duration-300"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                animate={{ y: isLoading ? 20 : 0, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <BracketsCurly className="w-6 h-6 md:w-7 md:h-7 text-indigo-300" weight="fill" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-2 -left-4 bg-indigo-900 shadow-lg rounded-full p-2 animate-float-delay-1 hover:-translate-y-2 transition-all duration-300"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
+                animate={{ y: isLoading ? 20 : 0, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.5, delay: 1.1 }}
               >
                 <FileTs className="w-6 h-6 md:w-7 md:h-7 text-indigo-300" weight="fill" />
               </motion.div>
               <motion.div
                 className="absolute -top-4 -right-4 bg-indigo-900 shadow-lg rounded-full p-2 animate-float-delay-2 hover:-translate-y-2 transition-all duration-300"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
+                animate={{ y: isLoading ? 20 : 0, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.5, delay: 1.4 }}
               >
                 <StackSimple className="w-6 h-6 md:w-7 md:h-7 text-indigo-300" weight="fill" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-2 -right-4 bg-indigo-900 shadow-lg rounded-full p-2 animate-float-delay-3 hover:-translate-y-2 transition-all duration-300"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.5 }}
+                animate={{ y: isLoading ? 20 : 0, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.5, delay: 1.7 }}
               >
                 <Code className="w-6 h-6 md:w-7 md:h-7 text-indigo-300" weight="fill" />
               </motion.div>
@@ -96,8 +101,8 @@ const Hero = () => {
               <motion.div
                 className="absolute bottom-9 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-800 to-blue-900 backdrop-blur-lg px-4 py-2 rounded-full shadow-lg"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.7 }}
+                animate={{ y: isLoading ? 20 : 0, opacity: isLoading ? 0 : 1 }}
+                transition={{ duration: 0.6, delay: 2.0 }}
               >
                 <div className="flex gap-6">
                   <a
@@ -135,8 +140,8 @@ const Hero = () => {
           <motion.div
             className="w-full md:w-3/5 flex flex-col md:items-start items-center md:text-left text-center pt-4 md:pt-0"
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+            animate={{ opacity: isLoading ? 0 : 1, x: isLoading ? 20 : 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
           >
             <StaggerContainer>
               <StaggerItem animation="fadeIn">

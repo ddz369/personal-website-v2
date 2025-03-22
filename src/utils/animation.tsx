@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useLoading } from './loadingContext';
 
 interface AnimateOnScrollProps {
   children: ReactNode;
@@ -61,14 +62,15 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
     triggerOnce: once,
     threshold: threshold,
   });
+  const { isLoading } = useLoading();
 
   React.useEffect(() => {
-    if (inView) {
+    if (!isLoading && inView) {
       controls.start('visible');
     } else if (!once) {
       controls.start('hidden');
     }
-  }, [controls, inView, once]);
+  }, [controls, inView, once, isLoading]);
 
   return (
     <motion.div
@@ -76,7 +78,7 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
       initial="hidden"
       animate={controls}
       variants={animations[animation]}
-      transition={{ duration, delay }}
+      transition={{ duration, delay: isLoading ? delay + 0.5 : delay }}
       className={className}
     >
       {children}
@@ -93,6 +95,7 @@ export const StaggerContainer: React.FC<{
     triggerOnce: true,
     threshold: 0.1,
   });
+  const { isLoading } = useLoading();
 
   const container = {
     hidden: { opacity: 0 },
@@ -100,6 +103,7 @@ export const StaggerContainer: React.FC<{
       opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
+        delayChildren: isLoading ? 0.5 : 0,
       },
     },
   };
@@ -110,7 +114,7 @@ export const StaggerContainer: React.FC<{
       className={className}
       variants={container}
       initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      animate={!isLoading && inView ? 'visible' : 'hidden'}
     >
       {children}
     </motion.div>
