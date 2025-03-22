@@ -1,7 +1,8 @@
 import React from 'react';
-import { Calendar, Buildings, BriefcaseMetal } from '@phosphor-icons/react';
+import { Calendar, Buildings, Code, DeviceMobile, Desktop } from '@phosphor-icons/react';
 import config from '@/utils/config';
 import { AnimateOnScroll, StaggerContainer, StaggerItem } from '@/utils/animation';
+import Image from 'next/image';
 
 interface ExperienceItem {
   title: string;
@@ -9,6 +10,8 @@ interface ExperienceItem {
   period: string;
   description: string[];
   technologies: string[];
+  logo: string;
+  roleIcon: React.ReactNode;
 }
 
 const experienceHistory: ExperienceItem[] = [
@@ -33,6 +36,8 @@ const experienceHistory: ExperienceItem[] = [
       'Firebase',
       'TailwindCSS',
     ],
+    logo: '/icons/mdcanada-logo.png',
+    roleIcon: <Code weight="regular" className="w-5 h-5" />,
   },
   {
     title: 'Software Developer',
@@ -56,6 +61,8 @@ const experienceHistory: ExperienceItem[] = [
       'SOAP',
       'VoIP',
     ],
+    logo: '/icons/diitalk-logo.png',
+    roleIcon: <DeviceMobile weight="regular" className="w-5 h-5" />,
   },
   {
     title: 'Programmer Analyst',
@@ -68,6 +75,8 @@ const experienceHistory: ExperienceItem[] = [
       'Provided technical support through troubleshooting, reducing average resolution time from 3 days to 1 day',
     ],
     technologies: ['C#', 'SQL', 'PowerShell', '.NET', 'Oracle'],
+    logo: '/icons/sasktel-logo.svg.png',
+    roleIcon: <Desktop weight="regular" className="w-5 h-5" />,
   },
 ];
 
@@ -121,9 +130,20 @@ const Experience = () => {
                   <div className="bg-indigo-900/20 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-indigo-800/30 hover:bg-indigo-800/20 transition-colors duration-300">
                     <StaggerContainer>
                       <StaggerItem animation="fadeIn">
-                        <div className="flex flex-wrap items-center gap-2 mb-2 text-indigo-300">
-                          <BriefcaseMetal weight="regular" className="w-5 h-5" />
-                          <h3 className="text-xl font-medium text-indigo-200">{job.title}</h3>
+                        <div className="flex justify-between items-center mb-2">
+                          <div className="flex items-center gap-2 text-indigo-300">
+                            {job.roleIcon}
+                            <h3 className="text-xl font-medium text-indigo-200">{job.title}</h3>
+                          </div>
+                          <div className="relative w-10 h-10 flex-shrink-0 overflow-hidden rounded p-1">
+                            <Image
+                              src={job.logo}
+                              alt={`${job.company} logo`}
+                              fill
+                              sizes="40px"
+                              className="object-contain p-0.5"
+                            />
+                          </div>
                         </div>
                       </StaggerItem>
 

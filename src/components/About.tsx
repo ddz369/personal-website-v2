@@ -101,7 +101,7 @@ const About = () => {
                   onClick={() => setActiveTab(key as TabKey)}
                   className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
                     activeTab === key
-                      ? 'bg-indigo-700/50 text-white'
+                      ? 'bg-indigo-900/50 text-white'
                       : 'text-indigo-300 hover:bg-indigo-800/30'
                   }`}
                 >
