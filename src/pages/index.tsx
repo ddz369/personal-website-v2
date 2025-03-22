@@ -1,15 +1,16 @@
 import Head from 'next/head';
 import Hero from '@/components/Hero';
+import config from '@/utils/config';
 
 export default function Home() {
+  const { siteMetadata } = config;
+
   return (
     <>
       <Head>
-        <title>Darvin Zhang Website</title>
-        <meta
-          name="description"
-          content="Personal website of Darvin Zhang, a software engineer, full-stack developer, and web developer."
-        />
+        <title>{siteMetadata.title}</title>
+        <meta name="description" content={siteMetadata.description} />
+        <meta name="author" content={siteMetadata.author} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

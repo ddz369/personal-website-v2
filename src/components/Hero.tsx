@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from './Button';
+import config from '@/utils/config';
 import {
   StackSimple,
   Code,
@@ -12,6 +13,8 @@ import {
 } from '@phosphor-icons/react';
 
 const Hero = () => {
+  const { personalInfo, socialLinks } = config;
+
   return (
     <section
       id="hero"
@@ -45,7 +48,7 @@ const Hero = () => {
                       width={400}
                       height={400}
                       src="/avatar.png"
-                      alt="Darvin Zhang Avatar"
+                      alt={`${personalInfo.name} Avatar`}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -68,7 +71,7 @@ const Hero = () => {
               <div className="absolute bottom-9 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-800 to-blue-900 backdrop-blur-lg px-4 py-2 rounded-full shadow-lg">
                 <div className="flex gap-6">
                   <a
-                    href="https://github.com/ddz369"
+                    href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -77,7 +80,7 @@ const Hero = () => {
                     <GithubLogo className="w-5 h-5" weight="regular" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/darvinzhang"
+                    href={socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -86,7 +89,7 @@ const Hero = () => {
                     <LinkedinLogo className="w-5 h-5" weight="regular" />
                   </a>
                   <a
-                    href="https://x.com/ddz369"
+                    href={socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -102,15 +105,22 @@ const Hero = () => {
           <div className="w-full md:w-3/5 flex flex-col md:items-start items-center md:text-left text-center pt-4 md:pt-0">
             <span className="text-indigo-300 text-lg mb-1">Hello, I am</span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl bg-gradient-to-r from-indigo-200 via-purple-300 to-indigo-400 bg-clip-text text-transparent pb-2">
-              Darvin Zhang
+              {personalInfo.name}
             </h1>
 
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1 mb-8 text-indigo-200">
-              <span className="text-sm sm:text-base font-light">Software Engineer</span>
-              <span className="text-indigo-500">•</span>
-              <span className="text-sm sm:text-base font-light">Full Stack Developer</span>
-              <span className="text-indigo-500">•</span>
-              <span className="text-sm sm:text-base font-light">UI/UX Enthusiast</span>
+              {personalInfo.title.map((title, index) => (
+                <>
+                  <span key={`title-${index}`} className="text-sm sm:text-base font-light">
+                    {title}
+                  </span>
+                  {index < personalInfo.title.length - 1 && (
+                    <span key={`dot-${index}`} className="text-indigo-500">
+                      •
+                    </span>
+                  )}
+                </>
+              ))}
             </div>
 
             <p className="text-lg text-indigo-300 mb-8 max-w-2xl font-light">
