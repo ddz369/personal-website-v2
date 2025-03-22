@@ -4,6 +4,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
 import { ArrowLeft, ArrowRight, Link } from '@phosphor-icons/react';
 import Button from '@/components/Button';
+import { AnimateOnScroll, StaggerContainer, StaggerItem } from '@/utils/animation';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -191,158 +192,174 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 font-light">
       <div className="container mx-auto px-4">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
-            My Recent Works
-          </h2>
-          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
-          <p className="text-indigo-200/70 max-w-2xl mx-auto">
-            Here are some of my recent projects. Each showcases different skills and technologies.
-          </p>
-        </div>
-
-        <div className="relative projects-carousel max-w-6xl mx-auto">
-          <Swiper
-            modules={[Navigation, Pagination, Keyboard, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            navigation={{
-              prevEl: navigationPrevRef.current,
-              nextEl: navigationNextRef.current,
-            }}
-            keyboard={{ enabled: true }}
-            loop={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: true,
-            }}
-            onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
-            onSwiper={swiper => {
-              setSwiperInstance(swiper);
-
-              setTimeout(() => {
-                if (swiper && swiper.params) {
-                  // @ts-expect-error - Swiper types don't fully match runtime behavior
-                  swiper.params.navigation.prevEl = navigationPrevRef.current;
-                  // @ts-expect-error - Swiper types don't fully match runtime behavior
-                  swiper.params.navigation.nextEl = navigationNextRef.current;
-                  swiper.navigation.update();
-                }
-              });
-            }}
-            className="rounded-xl overflow-hidden"
-          >
-            {projectsData.map(project => (
-              <SwiperSlide key={project.id}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
-                  <div className="project-image h-80 md:h-[320px] rounded-lg overflow-hidden relative group">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20"></div>
-                    <div
-                      className="w-full h-full bg-indigo-800/30 transform group-hover:scale-105 transition-transform duration-500"
-                      style={{
-                        backgroundImage: `url(${project.image})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                      }}
-                    />
-                  </div>
-                  <div className="project-details flex flex-col justify-between h-80 md:h-[320px]">
-                    <div>
-                      <h3 className="text-2xl text-indigo-100 mb-3 bg-gradient-to-r from-indigo-200 to-purple-200 bg-clip-text">
-                        {project.title}
-                      </h3>
-                      <p className="text-indigo-200/70 mb-5 line-clamp-4">{project.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.technologies.map(tech => (
-                          <span
-                            key={tech}
-                            className="text-xs bg-indigo-800/40 text-indigo-300 px-3 py-1 rounded-full border border-indigo-700/30"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-4 mt-auto">
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <Button
-                            variant="primary"
-                            size="sm"
-                            className="flex items-center gap-2 hover:scale-105 transition-transform"
-                            type="button"
-                          >
-                            <Link size={16} />
-                            Live Demo
-                          </Button>
-                        </a>
-                      )}
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="hover:scale-105 transition-transform"
-                            type="button"
-                          >
-                            View Code
-                          </Button>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <div
-            ref={navigationPrevRef}
-            className="absolute top-1/2 left-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
-          >
-            <ArrowLeft size={20} weight="light" />
+        <AnimateOnScroll animation="fadeIn" duration={0.6}>
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
+              My Recent Works
+            </h2>
+            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+            <p className="text-indigo-200/70 max-w-2xl mx-auto">
+              Here are some of my recent projects. Each showcases different skills and technologies.
+            </p>
           </div>
-          <div
-            ref={navigationNextRef}
-            className="absolute top-1/2 right-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
-          >
-            <ArrowRight size={20} weight="light" />
-          </div>
+        </AnimateOnScroll>
 
-          <div className="flex justify-center mt-8 gap-3">
-            {projectsData.map((_, index) => (
-              <div
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all cursor-pointer ${
-                  activeIndex === index
-                    ? 'h-3 w-10 bg-indigo-400 rounded-full shadow-sm shadow-indigo-400/30'
-                    : 'h-3 w-3 bg-indigo-700/50 hover:bg-indigo-500/50 rounded-full hover:scale-110 active:scale-95'
-                }`}
-                role="button"
-                aria-label={`Go to slide ${index + 1}`}
-                aria-current={activeIndex === index ? 'true' : 'false'}
-                tabIndex={0}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    goToSlide(index);
+        <AnimateOnScroll animation="slideUp" delay={0.2} duration={0.7}>
+          <div className="relative projects-carousel max-w-6xl mx-auto">
+            <Swiper
+              modules={[Navigation, Pagination, Keyboard, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              navigation={{
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
+              }}
+              keyboard={{ enabled: true }}
+              loop={true}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: true,
+              }}
+              onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
+              onSwiper={swiper => {
+                setSwiperInstance(swiper);
+
+                setTimeout(() => {
+                  if (swiper && swiper.params) {
+                    // @ts-expect-error - Swiper types don't fully match runtime behavior
+                    swiper.params.navigation.prevEl = navigationPrevRef.current;
+                    // @ts-expect-error - Swiper types don't fully match runtime behavior
+                    swiper.params.navigation.nextEl = navigationNextRef.current;
+                    swiper.navigation.update();
                   }
-                }}
-              />
-            ))}
+                });
+              }}
+              className="rounded-xl overflow-hidden"
+            >
+              {projectsData.map(project => (
+                <SwiperSlide key={project.id}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
+                    <div className="project-image h-80 md:h-[320px] rounded-lg overflow-hidden relative group">
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20"></div>
+                      <div
+                        className="w-full h-full bg-indigo-800/30 transform group-hover:scale-105 transition-transform duration-500"
+                        style={{
+                          backgroundImage: `url(${project.image})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                        }}
+                      />
+                    </div>
+                    <StaggerContainer className="project-details flex flex-col justify-between h-80 md:h-[320px]">
+                      <div>
+                        <StaggerItem animation="fadeIn">
+                          <h3 className="text-2xl text-indigo-100 mb-3 bg-gradient-to-r from-indigo-200 to-purple-200 bg-clip-text">
+                            {project.title}
+                          </h3>
+                        </StaggerItem>
+                        <StaggerItem animation="slideUp">
+                          <p className="text-indigo-200/70 mb-5 line-clamp-4">
+                            {project.description}
+                          </p>
+                        </StaggerItem>
+                        <StaggerItem animation="slideUp">
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {project.technologies.map(tech => (
+                              <span
+                                key={tech}
+                                className="text-xs bg-indigo-800/40 text-indigo-300 px-3 py-1 rounded-full border border-indigo-700/30"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </StaggerItem>
+                      </div>
+                      <StaggerItem animation="slideUp">
+                        <div className="flex flex-wrap gap-4 mt-auto">
+                          {project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block"
+                            >
+                              <Button
+                                variant="primary"
+                                size="sm"
+                                className="flex items-center gap-2 hover:scale-105 transition-transform"
+                                type="button"
+                              >
+                                <Link size={16} />
+                                Live Demo
+                              </Button>
+                            </a>
+                          )}
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block"
+                            >
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="hover:scale-105 transition-transform"
+                                type="button"
+                              >
+                                View Code
+                              </Button>
+                            </a>
+                          )}
+                        </div>
+                      </StaggerItem>
+                    </StaggerContainer>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div
+              ref={navigationPrevRef}
+              className="absolute top-1/2 left-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
+            >
+              <ArrowLeft size={20} weight="light" />
+            </div>
+            <div
+              ref={navigationNextRef}
+              className="absolute top-1/2 right-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
+            >
+              <ArrowRight size={20} weight="light" />
+            </div>
+
+            <AnimateOnScroll animation="slideUp" delay={0.3}>
+              <div className="flex justify-center mt-8 gap-3">
+                {projectsData.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`transition-all cursor-pointer ${
+                      activeIndex === index
+                        ? 'h-3 w-10 bg-indigo-400 rounded-full shadow-sm shadow-indigo-400/30'
+                        : 'h-3 w-3 bg-indigo-700/50 hover:bg-indigo-500/50 rounded-full hover:scale-110 active:scale-95'
+                    }`}
+                    role="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={activeIndex === index ? 'true' : 'false'}
+                    tabIndex={0}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        goToSlide(index);
+                      }
+                    }}
+                  />
+                ))}
+              </div>
+            </AnimateOnScroll>
           </div>
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

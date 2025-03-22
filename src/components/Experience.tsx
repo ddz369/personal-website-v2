@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Buildings, BriefcaseMetal } from '@phosphor-icons/react';
 import config from '@/utils/config';
+import { AnimateOnScroll, StaggerContainer, StaggerItem } from '@/utils/animation';
 
 interface ExperienceItem {
   title: string;
@@ -76,33 +77,38 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 font-light">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4x bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
-            Work Experience
-          </h2>
-          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
-          <p className="text-indigo-200/70 max-w-2xl mx-auto">
-            My professional journey as a developer. These experiences have shaped my skills and
-            approach to problem-solving.{' '}
-            <a
-              href={resumeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/30 underline-offset-2 transition-colors"
-            >
-              View my full resume
-            </a>
-            .
-          </p>
-        </div>
+        <AnimateOnScroll animation="fadeIn" duration={0.6}>
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl md:text-4x bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
+              Work Experience
+            </h2>
+            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+            <p className="text-indigo-200/70 max-w-2xl mx-auto">
+              My professional journey as a developer. These experiences have shaped my skills and
+              approach to problem-solving.{' '}
+              <a
+                href={resumeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/30 underline-offset-2 transition-colors"
+              >
+                View my full resume
+              </a>
+              .
+            </p>
+          </div>
+        </AnimateOnScroll>
 
         <div className="relative">
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-indigo-800/30 transform md:translate-x-0 translate-x-12"></div>
 
           <div className="space-y-12">
             {experienceHistory.map((job, index) => (
-              <div
+              <AnimateOnScroll
                 key={index}
+                animation={index % 2 === 0 ? 'slideRight' : 'slideLeft'}
+                delay={0.2 * index}
+                threshold={0.1}
                 className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 <div className="absolute left-12 md:left-1/2 w-6 h-6 rounded-full bg-indigo-900 border-2 border-indigo-400 transform -translate-x-3 md:-translate-x-3 z-10 flex items-center justify-center">
@@ -113,41 +119,54 @@ const Experience = () => {
                   className={`md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'} ml-16 md:ml-0`}
                 >
                   <div className="bg-indigo-900/20 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-indigo-800/30 hover:bg-indigo-800/20 transition-colors duration-300">
-                    <div className="flex flex-wrap items-center gap-2 mb-2 text-indigo-300">
-                      <BriefcaseMetal weight="regular" className="w-5 h-5" />
-                      <h3 className="text-xl font-medium text-indigo-200">{job.title}</h3>
-                    </div>
+                    <StaggerContainer>
+                      <StaggerItem animation="fadeIn">
+                        <div className="flex flex-wrap items-center gap-2 mb-2 text-indigo-300">
+                          <BriefcaseMetal weight="regular" className="w-5 h-5" />
+                          <h3 className="text-xl font-medium text-indigo-200">{job.title}</h3>
+                        </div>
+                      </StaggerItem>
 
-                    <div className="flex flex-wrap items-center gap-2 mb-4 text-indigo-400 text-sm">
-                      <Buildings weight="regular" className="w-4 h-4" />
-                      <span>{job.company}</span>
-                      <span className="w-1 h-1 rounded-full bg-indigo-700"></span>
-                      <Calendar weight="regular" className="w-4 h-4" />
-                      <span>{job.period}</span>
-                    </div>
+                      <StaggerItem animation="fadeIn">
+                        <div className="flex flex-wrap items-center gap-2 mb-4 text-indigo-400 text-sm">
+                          <Buildings weight="regular" className="w-4 h-4" />
+                          <span>{job.company}</span>
+                          <span className="w-1 h-1 rounded-full bg-indigo-700"></span>
+                          <Calendar weight="regular" className="w-4 h-4" />
+                          <span>{job.period}</span>
+                        </div>
+                      </StaggerItem>
 
-                    <ul className="space-y-2 mb-4">
-                      {job.description.map((item, idx) => (
-                        <li key={idx} className="flex text-sm items-start gap-2 text-indigo-100">
-                          <span className="text-indigo-400 mt-1 flex-shrink-0">•</span>
-                          <span className="break-words">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      <StaggerItem animation="fadeIn">
+                        <ul className="space-y-2 mb-4">
+                          {job.description.map((item, idx) => (
+                            <li
+                              key={idx}
+                              className="flex text-sm items-start gap-2 text-indigo-100"
+                            >
+                              <span className="text-indigo-400 mt-1 flex-shrink-0">•</span>
+                              <span className="break-words">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </StaggerItem>
 
-                    <div className="flex flex-wrap gap-2">
-                      {job.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 bg-indigo-900/50 rounded-md text-indigo-300 text-xs"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                      <StaggerItem animation="fadeIn">
+                        <div className="flex flex-wrap gap-2">
+                          {job.technologies.map((tech, idx) => (
+                            <span
+                              key={idx}
+                              className="px-2 py-1 bg-indigo-900/50 rounded-md text-indigo-300 text-xs"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </StaggerItem>
+                    </StaggerContainer>
                   </div>
                 </div>
-              </div>
+              </AnimateOnScroll>
             ))}
           </div>
         </div>
