@@ -77,7 +77,20 @@ const Experience = () => {
           <h2 className="text-3xl md:text-4x bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
             Work Experience
           </h2>
-          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto"></div>
+          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+          <p className="text-indigo-200/70 max-w-2xl mx-auto">
+            My professional journey as a developer. These experiences have shaped my skills and
+            approach to problem-solving.{' '}
+            <a
+              href="https://drive.google.com/file/d/1WACaUsBX_RGfPWR2_c2FPERaW4GWp3FW/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/30 underline-offset-2 transition-colors"
+            >
+              View my full resume
+            </a>
+            .
+          </p>
         </div>
 
         <div className="relative">

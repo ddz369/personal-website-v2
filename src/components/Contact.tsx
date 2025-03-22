@@ -68,7 +68,11 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
             Contact
           </h2>
-          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto"></div>
+          <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+          <p className="text-indigo-200/70 max-w-4xl mx-auto">
+            Interested in working together? Fill out the form below and I&apos;ll get back to you
+            ASAP.
+          </p>
         </div>
 
         <div className="bg-indigo-900/30 backdrop-blur-sm rounded-xl px-5 py-10 border border-indigo-800/20 shadow-lg">
