@@ -17,7 +17,7 @@ async function generateSitemap(): Promise<void> {
   ];
 
   // Create a sitemap stream
-  const stream = new SitemapStream({ hostname: 'https://example.com' });
+  const stream = new SitemapStream({ hostname: 'https://darvinzhang.com' });
 
   // Create a readable stream for the sitemap data
   const sitemapData = Readable.from(pages).pipe(stream);
