@@ -21,6 +21,12 @@ interface PersonalInfo {
   email: string;
 }
 
+interface EmailJSConfig {
+  serviceId: string;
+  templateId: string;
+  publicKey: string;
+}
+
 const socialLinks: SocialLinks = {
   github: process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/ddz369',
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://linkedin.com/in/darvinzhang',
@@ -43,10 +49,17 @@ const personalInfo: PersonalInfo = {
   email: process.env.NEXT_PUBLIC_EMAIL || 'darvin.zhang@gmail.com',
 };
 
+const emailJS: EmailJSConfig = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+};
+
 const config = {
   socialLinks,
   siteMetadata,
   personalInfo,
+  emailJS,
 };
 
 export default config;
