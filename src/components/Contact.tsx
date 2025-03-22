@@ -71,7 +71,7 @@ const Contact = () => {
             <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
               Let&apos;s Talk
             </h2>
-            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6" />
             <p className="text-indigo-200/70 max-w-4xl mx-auto">
               Interested in working together? Fill out the form below and I&apos;ll get back to you
               ASAP.
@@ -142,7 +142,7 @@ const Contact = () => {
                     >
                       {formStatus === 'submitting' ? (
                         <>
-                          <span className="inline-block h-4 w-4 border-2 border-white/20 border-t-white/80 rounded-full animate-spin"></span>
+                          <span className="inline-block h-4 w-4 border-2 border-white/20 border-t-white/80 rounded-full animate-spin" />
                           <span>Sending...</span>
                         </>
                       ) : (

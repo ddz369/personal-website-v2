@@ -82,7 +82,7 @@ const Experience = () => {
             <h2 className="text-3xl md:text-4x bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
               Work Experience
             </h2>
-            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6" />
             <p className="text-indigo-200/70 max-w-2xl mx-auto">
               My professional journey as a developer. These experiences have shaped my skills and
               approach to problem-solving.{' '}
@@ -100,7 +100,7 @@ const Experience = () => {
         </AnimateOnScroll>
 
         <div className="relative">
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-indigo-800/30 transform md:translate-x-0 translate-x-12"></div>
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-indigo-800/30 transform md:translate-x-0 translate-x-12" />
 
           <div className="space-y-12">
             {experienceHistory.map((job, index) => (
@@ -112,7 +112,7 @@ const Experience = () => {
                 className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 <div className="absolute left-12 md:left-1/2 w-6 h-6 rounded-full bg-indigo-900 border-2 border-indigo-400 transform -translate-x-3 md:-translate-x-3 z-10 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-indigo-400"></div>
+                  <div className="w-2 h-2 rounded-full bg-indigo-400" />
                 </div>
 
                 <div
@@ -131,7 +131,7 @@ const Experience = () => {
                         <div className="flex flex-wrap items-center gap-2 mb-4 text-indigo-400 text-sm">
                           <Buildings weight="regular" className="w-4 h-4" />
                           <span>{job.company}</span>
-                          <span className="w-1 h-1 rounded-full bg-indigo-700"></span>
+                          <span className="w-1 h-1 rounded-full bg-indigo-700" />
                           <Calendar weight="regular" className="w-4 h-4" />
                           <span>{job.period}</span>
                         </div>

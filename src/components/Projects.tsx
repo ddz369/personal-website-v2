@@ -199,7 +199,7 @@ const Projects = () => {
             <h2 className="text-3xl md:text-4xl bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4">
               My Recent Works
             </h2>
-            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6"></div>
+            <div className="h-px w-16 bg-indigo-500/30 rounded-full mx-auto mb-6" />
             <p className="text-indigo-200/70 max-w-2xl mx-auto">
               Here are some of my recent projects. Each showcases different skills and technologies.
             </p>
@@ -242,8 +242,8 @@ const Projects = () => {
                 <SwiperSlide key={project.id}>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
                     <div className="project-image h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden relative group">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300"></div>
-                      <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20"></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300" />
+                      <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20" />
                       <div
                         className="w-full h-full bg-indigo-800/30 transform group-hover:scale-105 transition-transform duration-500"
                         style={{

@@ -121,7 +121,7 @@ const Navbar = () => {
                     />
 
                     {isActive && (
-                      <span className="absolute inset-0 bg-indigo-600/30 rounded-full animate-pulse"></span>
+                      <span className="absolute inset-0 bg-indigo-600/30 rounded-full animate-pulse" />
                     )}
                   </div>
 
