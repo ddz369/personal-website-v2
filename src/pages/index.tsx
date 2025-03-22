@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Hero from '@/components/Hero';
+import About from '@/components/About';
 import config from '@/utils/config';
 import { useEffect } from 'react';
 
@@ -24,6 +25,7 @@ export default function Home() {
       </Head>
       <main className="pb-16">
         <Hero />
+        <About />
       </main>
     </>
   );
