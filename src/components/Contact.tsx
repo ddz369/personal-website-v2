@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { Envelope, User, PaperPlaneTilt } from '@phosphor-icons/react';
+import { Envelope, User, PaperPlaneTilt, Phone } from '@phosphor-icons/react';
 import Button from '@/components/Button';
 import emailjs from '@emailjs/browser';
 import config from '@/utils/config';
 
 const { serviceId, templateId, publicKey } = config.emailJS;
+const { email, phone } = config.personalInfo;
 
 const Contact = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -150,6 +151,28 @@ const Contact = () => {
               </div>
             )}
           </form>
+        </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-indigo-300 text-sm mb-3">Or reach out directly:</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center gap-2 text-indigo-200 text-sm hover:text-indigo-100 transition-colors"
+              aria-label="Email me"
+            >
+              <Envelope weight="light" className="w-4 h-4" />
+              <span>{email}</span>
+            </a>
+            <a
+              href={`tel:${phone.replace(/\s+/g, '')}`}
+              className="flex items-center gap-2 text-indigo-200 text-sm hover:text-indigo-100 transition-colors"
+              aria-label="Call me"
+            >
+              <Phone weight="light" className="w-4 h-4" />
+              <span>{phone}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
