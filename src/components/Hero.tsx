@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from './Button';
 import config from '@/utils/config';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import {
   StackSimple,
   Code,
@@ -12,8 +14,15 @@ import {
   BracketsCurly,
 } from '@phosphor-icons/react';
 
+const TypewriterComponent = dynamic(() => import('typewriter-effect'), { ssr: false });
+
 const Hero = () => {
   const { personalInfo, socialLinks } = config;
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <section
@@ -124,8 +133,30 @@ const Hero = () => {
             </div>
 
             <p className="text-lg text-indigo-300 mb-8 max-w-2xl font-light">
-              I specialize in creating sophisticated digital products that combine elegant design
-              with robust functionality. Let&apos;s collaborate on your next innovative project.
+              With passion and precision, I craft{' '}
+              <span className="text-indigo-100 font-normal inline-block min-h-[1.5rem] min-w-28">
+                {isMounted ? (
+                  <TypewriterComponent
+                    options={{
+                      strings: [
+                        'web applications',
+                        'responsive websites',
+                        'scalable infrastructure',
+                        'RESTful APIs',
+                        'cloud solutions',
+                      ],
+                      autoStart: true,
+                      loop: true,
+                      delay: 75,
+                      deleteSpeed: 50,
+                    }}
+                  />
+                ) : (
+                  'web applications'
+                )}
+              </span>{' '}
+              with a focus on performance and user experience. Let&apos;s collaborate on your next
+              innovative project.
             </p>
 
             <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start">
