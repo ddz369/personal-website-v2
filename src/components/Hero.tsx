@@ -29,22 +29,6 @@ const Hero = () => {
       id="hero"
       className="relative flex items-center justify-center py-24 md:py-32 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-blue-950 to-indigo-950"></div>
-
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[15%] right-[10%] w-24 h-24 rotate-45 border border-indigo-800 opacity-30"></div>
-        <div className="absolute top-[40%] left-[5%] w-16 h-16 rotate-45 border border-indigo-700 opacity-30"></div>
-        <div className="absolute top-[25%] left-[35%] w-10 h-10 rotate-45 bg-indigo-900 opacity-15"></div>
-        <div className="absolute bottom-[15%] right-[25%] w-20 h-20 rotate-45 border-2 border-indigo-700 opacity-25"></div>
-        <div className="absolute bottom-[35%] left-[15%] w-12 h-12 rotate-45 bg-indigo-800 opacity-15"></div>
-        <div className="absolute top-[60%] right-[5%] w-8 h-8 rotate-45 bg-indigo-900 opacity-20"></div>
-      </div>
-
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-25 pointer-events-none">
-        <div className="absolute top-1/4 right-[-7%] w-[45%] h-[50%] rounded-full bg-indigo-800 blur-[110px]"></div>
-        <div className="absolute bottom-[-7%] left-[-7%] w-[45%] h-[50%] rounded-full bg-indigo-700 blur-[110px]"></div>
-      </div>
-
       <div className="container mx-auto px-4 relative z-10 max-w-5xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-0 md:gap-8">
           <div className="w-full md:w-2/5 flex justify-center md:justify-start">
@@ -52,7 +36,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-600 p-1">
                 <div className="rounded-full bg-gray-900 h-full w-full p-3 hover:scale-110 transition-all duration-300">
                   <div className="bg-indigo-950 h-full w-full rounded-full bg-gradient-to-tr from-yellow-300 to-yellow-500 overflow-hidden">
-                    <div className="h-full w-full rounded-full opacity-40 bg-indigo-800 overflow-hidden absolute inset-0" />
+                    <div className="h-full w-full rounded-full opacity-50 bg-indigo-800 overflow-hidden absolute inset-0" />
                     <Image
                       width={400}
                       height={400}
