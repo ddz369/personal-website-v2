@@ -17,20 +17,21 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variantClasses = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white',
-    secondary: 'bg-gray-600 hover:bg-gray-700 text-white',
-    outline: 'bg-transparent border border-blue-600 text-blue-600 hover:bg-blue-50',
+    primary: 'bg-gradient-to-r from-indigo-800 to-blue-800 text-indigo-200 hover:bg-indigo-900',
+    secondary: 'bg-white hover:bg-indigo-50 text-indigo-900',
+    outline:
+      'bg-transparent border border-indigo-800 text-indigo-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/30',
   };
 
   const sizeClasses = {
-    sm: 'py-1 px-3 text-sm',
-    md: 'py-2 px-4',
-    lg: 'py-3 px-6 text-lg',
+    sm: 'py-1 px-4 text-sm',
+    md: 'py-2 px-6',
+    lg: 'py-3 px-8 text-lg',
   };
 
   return (
     <button
-      className={`font-medium rounded-md transition-colors ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={`cursor-pointer font-light rounded-full transition-all duration-300 hover:scale-105 hover:shadow-button-hover ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}
