@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "sitemap": "tsx scripts/generate-sitemap.ts",
+    "sitemap": "tsx --tsconfig tsconfig.json scripts/generate-sitemap.ts",
     "precheck": "pnpm type:check && pnpm format:check && pnpm lint",
     "prebuild": "pnpm sitemap && pnpm precheck",
     "export": "next build",
