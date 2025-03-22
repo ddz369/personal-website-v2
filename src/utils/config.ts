@@ -19,6 +19,7 @@ interface PersonalInfo {
   name: string;
   title: string[];
   email: string;
+  resumeLink: string;
 }
 
 interface EmailJSConfig {
@@ -47,6 +48,9 @@ const personalInfo: PersonalInfo = {
     process.env.NEXT_PUBLIC_TITLES || 'Software Engineer,Full Stack Developer,UI/UX Enthusiast'
   ).split(','),
   email: process.env.NEXT_PUBLIC_EMAIL || 'darvin.zhang@gmail.com',
+  resumeLink:
+    process.env.NEXT_PUBLIC_RESUME_LINK ||
+    'https://drive.google.com/file/d/1WACaUsBX_RGfPWR2_c2FPERaW4GWp3FW/view?usp=sharing',
 };
 
 const emailJS: EmailJSConfig = {

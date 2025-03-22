@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Buildings, BriefcaseMetal } from '@phosphor-icons/react';
+import config from '@/utils/config';
 
 interface ExperienceItem {
   title: string;
@@ -70,6 +71,8 @@ const experienceHistory: ExperienceItem[] = [
 ];
 
 const Experience = () => {
+  const { resumeLink } = config.personalInfo;
+
   return (
     <section id="experience" className="py-20 font-light">
       <div className="container mx-auto px-4 max-w-5xl">
@@ -82,7 +85,7 @@ const Experience = () => {
             My professional journey as a developer. These experiences have shaped my skills and
             approach to problem-solving.{' '}
             <a
-              href="https://drive.google.com/file/d/1WACaUsBX_RGfPWR2_c2FPERaW4GWp3FW/view?usp=sharing"
+              href={resumeLink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-500/30 underline-offset-2 transition-colors"
