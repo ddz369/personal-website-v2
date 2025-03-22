@@ -238,8 +238,8 @@ const Projects = () => {
             >
               {projectsData.map(project => (
                 <SwiperSlide key={project.id}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
-                    <div className="project-image h-80 md:h-[320px] rounded-lg overflow-hidden relative group">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-indigo-900/30 backdrop-blur-sm rounded-xl p-8 md:p-10 border border-indigo-800/20 shadow-lg mx-auto">
+                    <div className="project-image h-48 sm:h-64 md:h-80 rounded-lg overflow-hidden relative group">
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/20 to-indigo-950/90 z-10 group-hover:opacity-80 transition-opacity duration-300"></div>
                       <div className="absolute inset-0 border border-indigo-400/10 rounded-lg z-20"></div>
                       <div
@@ -251,7 +251,7 @@ const Projects = () => {
                         }}
                       />
                     </div>
-                    <StaggerContainer className="project-details flex flex-col justify-between h-80 md:h-[320px]">
+                    <StaggerContainer className="project-details flex flex-col justify-between h-96 lg:h-80">
                       <div>
                         <StaggerItem animation="fadeIn">
                           <h3 className="text-2xl text-indigo-100 mb-3 bg-gradient-to-r from-indigo-200 to-purple-200 bg-clip-text">
