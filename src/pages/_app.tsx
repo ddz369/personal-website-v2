@@ -12,7 +12,9 @@ const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), { ssr:
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <LoadingProvider>
-      <main className={`${workSans.variable} ${raleway.variable} min-h-screen relative`}>
+      <main
+        className={`${workSans.variable} ${raleway.variable} min-h-screen relative overflow-x-hidden w-full`}
+      >
         <LoadingScreen minimumLoadingTime={1500} />
         <Background />
         <Navbar />
