@@ -24,6 +24,15 @@ const Navbar = () => {
       const sections = ['hero', 'about', 'experience', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const isScrolledToBottom = window.scrollY + windowHeight >= documentHeight - 100;
+
+      if (isScrolledToBottom) {
+        setActiveSection('contact');
+        return;
+      }
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
