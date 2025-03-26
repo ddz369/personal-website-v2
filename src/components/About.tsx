@@ -18,7 +18,7 @@ const About = () => {
       icon: <Heart weight="regular" className="text-pink-400 w-5 h-5" />,
       title: 'Passions',
       content: [
-        'Building intuitive user experiences',
+        'Creating intuitive user experiences',
         'Solving complex technical challenges',
         'Learning new technologies',
         'Building meaningful digital solutions',
@@ -71,7 +71,7 @@ const About = () => {
                 <p>
                   While not coding,{' '}
                   <span className="text-indigo-300 font-medium">
-                    I enjoy fitness, gaming, and travel
+                    I enjoy fitness, gaming, music, and travel
                   </span>{' '}
                   — these activities fuel my creativity and problem-solving skills, bringing fresh
                   perspectives to my technical work.

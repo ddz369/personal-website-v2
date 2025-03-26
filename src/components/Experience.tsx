@@ -20,10 +20,10 @@ const experienceHistory: ExperienceItem[] = [
     company: 'MDCanada',
     period: 'August 2020 - Present',
     description: [
-      'Spearheaded end-to-end website development projects that increased monthly active users by 35%, ensuring cross-browser and multi-platform compatibility',
-      'Led a team of 5 developers to meet strict project requirements and deadlines while fostering collaboration and reducing bug backlog by 40%',
-      'Designed, built, and deployed scalable, highly available websites using Docker, AWS, and Kubernetes, achieving 99.9% uptime',
-      'Implemented agile methodologies, like Scrum, to manage sprints and reduce project delivery time by 20%',
+      'Spearheaded end-to-end website development projects that increased monthly active users by 35%, ensuring cross-browser and multi-platform compatibility using React, TypeScript, Django, and PostgreSQL',
+      'Led a small team of developers using Agile methodologies to improve collaboration, reduce bug backlog by 40%, and accelerate project delivery by 20% while consistently meeting strict deadlines and requirements',
+      'Developed and optimized RESTful APIs and complex SQL queries, improving application performance by 30% and ensuring seamless integration between front-end interfaces and back-end services',
+      'Designed, built, and deployed scalable, highly available websites using Docker, AWS (S3, Lightsail, EKS, ECR, EC2, Route 53, Chime), and Kubernetes, achieving 99.9% uptime',
     ],
     technologies: [
       'React',

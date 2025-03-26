@@ -28,7 +28,7 @@ const projectsData: Project[] = [
     id: 'personal-site-v2',
     title: 'Personal Website v2',
     description:
-      "My latest portfolio website built with Next.js, TypeScript, and Tailwind CSS 4.0. Features a modern design with smooth animations and responsive layout. I'll try to keep it updated with my latest projects and skills.",
+      'My latest portfolio website built with Next.js, TypeScript, and Tailwind CSS 4.0. Features a modern design with smooth animations, optimized performance, and a fully responsive layout across all devices.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'Vercel', 'Supabase'],
     image: '/images/personal-site-v2.png',
     link: 'https://darvinzhang.com',
@@ -38,7 +38,7 @@ const projectsData: Project[] = [
     id: 'healthtalk',
     title: 'HealthTalk Platform',
     description:
-      'A telehealth application connecting patients with healthcare providers via a digital meeting room. Features video consultations, secure messaging, invoicing, a subscription model, a dashboard for managing patient information, 2FA, and more.',
+      'A comprehensive telehealth application connecting patients with healthcare providers via secure digital meeting rooms. Features HIPAA-compliant video consultations, encrypted messaging, automated invoicing, and subscription management.',
     technologies: [
       'React',
       'Google Realtime Database',
@@ -64,7 +64,7 @@ const projectsData: Project[] = [
     id: 'shingleguard',
     title: 'ShingleGuard Roofing App',
     description:
-      'A freelance project I did for a roofing company to help them gain more customers by providing a platform for them to showcase their services and get more leads.',
+      'Freelanced a custom digital platform for a roofing company. Implemented a responsive UI with intuitive service showcases, and comprehensive analytics to track customer engagement.',
     technologies: [
       'React',
       'Vite',
@@ -84,7 +84,7 @@ const projectsData: Project[] = [
     id: 'diitalk',
     title: 'DiiTalk Messaging App',
     description:
-      'An encrypted messaging platform with real-time communication, file sharing, and group chat functionality. Also known as the FIRST and the ONLY app that lets you make FREE local & international dialled calls to ANYONE, ANYWHERE!',
+      'An enterprise-grade encrypted messaging platform with real-time communication, secure file sharing, and collaborative group functionality. Pioneering VoIP technology allowing users to make FREE local & international dialled calls to anyone worldwide.',
     technologies: [
       'PHP',
       'PostgreSQL',
@@ -111,9 +111,9 @@ const projectsData: Project[] = [
   },
   {
     id: 'globalcare',
-    title: 'GlobalCare Health Portal',
+    title: 'GlobalCare Canada',
     description:
-      'A freelance project I did for a client to help them find leads for a concierge service for surgeries within Turkey.',
+      'A freelance project I did for a medical tourism company. Implemented a custom system that automated lead capture, qualification, and nurturing processes.',
     technologies: [
       'React',
       'Vite',
@@ -133,7 +133,7 @@ const projectsData: Project[] = [
     id: 'personal-site-v1',
     title: 'Personal Website v1',
     description:
-      "My first portfolio website showcasing my early web development skills. Because of this new project, I currently don't use this website anymore. You can still see the code on my GitHub and some of my older projects from University on it.",
+      'My first professional portfolio showcase featuring an interactive design and seamless user experience. This project remains in my GitHub as a testament to my early development approach and coding evolution.',
     technologies: [
       'React',
       'Flask',
@@ -151,7 +151,7 @@ const projectsData: Project[] = [
     id: 'lynkcoin',
     title: 'LynkCoin',
     description:
-      'A two-man website being developed in Python, React, and Google App Engine. In a nutshell, it is a platform for generating and completing tasks for a new cryptocurrency called LynkCoin. The site is still under development.',
+      'An innovative blockchain platform leveraging distributed ledger technology to create a task-based cryptocurrency ecosystem. This platform enables secure token generation and exchange, featuring real-time reward system for task completions. Website is still under development.',
     technologies: [
       'React',
       'Blockchain',
