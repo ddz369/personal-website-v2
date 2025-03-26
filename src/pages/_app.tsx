@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Background from '@/components/Background';
 import dynamic from 'next/dynamic';
 import { LoadingProvider } from '@/utils/loadingContext';
+import { Analytics } from '@vercel/analytics/react';
 
 const LoadingScreen = dynamic(() => import('@/components/LoadingScreen'), { ssr: false });
 
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Navbar />
         <Component {...pageProps} />
         <Footer />
+        <Analytics />
       </main>
     </LoadingProvider>
   );
