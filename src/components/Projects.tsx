@@ -368,13 +368,13 @@ const Projects = () => {
 
             <div
               ref={navigationPrevRef}
-              className="absolute top-1/2 left-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
+              className="lg:block hidden absolute top-1/2 left-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
             >
               <ArrowLeft size={20} weight="light" />
             </div>
             <div
               ref={navigationNextRef}
-              className="absolute top-1/2 right-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
+              className="lg:block hidden absolute top-1/2 right-4 -translate-y-1/2 z-10 p-3 rounded-full bg-indigo-900/70 text-indigo-200 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors shadow-md hover:shadow-indigo-500/20"
             >
               <ArrowRight size={20} weight="light" />
             </div>
